@@ -122,3 +122,11 @@ text = result["candidates"][0]["content"]["parts"][0]["text"]
 
 print("===== KAMBO SNS POST =====")
 print(text)
+
+summary_path = os.environ.get("GITHUB_STEP_SUMMARY")
+
+if summary_path:
+    with open(summary_path, "a", encoding="utf-8") as f:
+        f.write("# KAMBO SNS 投稿案\n\n")
+        f.write(text)
+        f.write("\n")
