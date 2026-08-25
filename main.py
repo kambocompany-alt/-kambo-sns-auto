@@ -6,7 +6,7 @@ from zoneinfo import ZoneInfo
 
 API_KEY = os.environ["GEMINI_API_KEY"]
 
-MODEL = "gemini-2.5-flash"
+MODEL = "gemini-2.5-flash-lite"
 
 JST = ZoneInfo("Asia/Tokyo")
 now = datetime.now(JST)
