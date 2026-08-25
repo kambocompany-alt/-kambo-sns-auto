@@ -7,7 +7,7 @@ from zoneinfo import ZoneInfo
 
 API_KEY = os.environ["GEMINI_API_KEY"]
 
-MODEL = "gemini-2.5-flash-lite"
+MODEL = "gemini-3.5-flash-lite"
 
 JST = ZoneInfo("Asia/Tokyo")
 now = datetime.now(JST)
@@ -99,9 +99,8 @@ data = {
         }
     ],
     "generationConfig": {
-        "temperature": 1.0,
-        "maxOutputTokens": 1200
-    }
+    "maxOutputTokens": 1200
+}
 }
 
 request = urllib.request.Request(
