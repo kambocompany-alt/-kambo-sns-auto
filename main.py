@@ -1,6 +1,7 @@
 import os
 import json
 import urllib.request
+import urllib.error
 from datetime import datetime
 from zoneinfo import ZoneInfo
 
@@ -110,9 +111,14 @@ request = urllib.request.Request(
     method="POST"
 )
 
-with urllib.request.urlopen(request) as response:
-    result = json.loads(response.read().decode("utf-8"))
-
+try:
+    with urllib.request.urlopen(request) as response:
+        result = json.loads(response.read().decode("utf-8"))
+except urllib.error.HTTPError as e:
+    print("HTTP STATUS:", e.code)
+    print("ERROR BODY:")
+    print(e.read().decode("utf-8"))
+    raise
 text = result["candidates"][0]["content"]["parts"][0]["text"]
 
 print("===== KAMBO SNS POST =====")
